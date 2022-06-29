@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  color: #EEE;
+  font-family: 'Roboto Slab', serif;
+}
+
+body {
+  background: #222;
+  min-height: 100vh;
+}
+
+header {
+  background: #444;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2rem;
+  padding: .5rem;
+}
+
+#add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  margin: .5rem;
+  border-radius: 50%;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  background: #444;
+  width: 15rem;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 15px;
+}
+
+.book-title {
+  border-bottom: 1px solid #EEE;
+  padding-bottom: .5rem;
+  text-align: center;
+}
+
+.book-author,
+.book-pages {
+  padding: .25rem;
+}
+
+.not-read-button,
+.read-button {
+  background: #ee7373;
+  color: #222;
+  border-radius: 15px;
+  margin: .25rem;
+}
+
+.read-button {
+  background: #5fe056;
+}
