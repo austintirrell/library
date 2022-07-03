@@ -52,7 +52,7 @@ h1 {
 
 #book-add-form {
   position: fixed;
-  display:none;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -72,7 +72,8 @@ h1 {
   align-items: center;
 }
 
-#book-add-form p, input {
+#book-add-form p,
+input {
   margin: .5rem;
   font-size: 1.5rem;
   border-radius: 15px;
@@ -97,7 +98,7 @@ h1 {
   margin: .5rem;
 }
 
-main {
+#book-container {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-items: center;
@@ -124,9 +125,17 @@ main {
   padding: .25rem;
 }
 
-.read-button {
-  background: #ee7373;
+.read-button,
+.remove-button {
   color: #222;
   border-radius: 15px;
   margin: .25rem;
+}
+
+.read-true {
+  background: #7ae378;
+}
+
+.read-false {
+  background: #ee7373;
 }
