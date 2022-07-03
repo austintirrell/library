@@ -12,20 +12,19 @@
       <h1>Library</h1>
       <button id="add-button">+</button>
     </header>
-    <main>
-      <div class="book-card">
-        <h2 class="book-title">Percy Jackson</h2>
-        <p class="book-author">By: Rick Riordan</p>
-        <p class="book-pages">Pages: 416</p>
-        <button class="not-read-button">Not Read</button>
+
+    <div id="book-add-form">
+      <input type="text" id="book-title" placeholder="Title">
+      <input type="text" id="book-author" placeholder="Author">
+      <input type="number" id="book-pages" placeholder="Page Count">
+      <div class="read-container">
+        <p>Have you read it?</p>
+        <input type="checkbox" name="title" id="book-read">
       </div>
-      <div class="book-card">
-        <h2 class="book-title">Hatchet</h2>
-        <p class="book-author">By: Gary Paulsen</p>
-        <p class="book-pages">Pages: 195</p>
-        <button class="read-button">Read</button>
-      </div>
-    </main>
+      <button id="add-book">Add</button>
+    </div>
+
+    <main id="book-container"></main>
     <script src="script.js" async defer></script>
   </body>
 </html>
