@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Finlandica&display=swap');
 
 * {
   margin: 0;
@@ -28,7 +29,7 @@ h1 {
 }
 
 #add-button {
-  font-family: Impact, sans-serif;
+  font-family: 'Finlandica', sans-serif;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -102,6 +103,7 @@ input {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-items: center;
+  align-items: center;
 }
 
 .book-card {
@@ -138,4 +140,15 @@ input {
 
 .read-false {
   background: #ee7373;
+}
+
+@media only screen and (min-width:600px) {
+  #book-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (min-width:1000px) {
+  #book-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
