@@ -1,2 +1,4 @@
-# library
-A library app to store what books you have and haven't read
+# [Library](https://austintirrell.github.io/library) <- Live Preview
+
+## Why I made this
+As simple as this project looks, I created it to show that I can work with objects, and even work with prototype. I enjoyed creating this, and finished it up in about a day.
