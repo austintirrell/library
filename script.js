@@ -29,6 +29,10 @@ function Book(idCounter, title, author, pages, read) {
   this.read = read
 }
 
+Book.prototype.toggleRead = function() {
+  this.read = !this.read
+}
+
 function addToLibrary() {
   if (bookTitle.value == '' || bookAuthor.value == '' || bookPages.value == '') {
     return
@@ -40,35 +44,37 @@ function addToLibrary() {
     bookPages.value,
     bookRead.checked
   )
-  display()
+  display(idCounter)
   resetForm()
   idCounter++
 }
 
-function display() {
+function display(idCounter) {
   let bookID = idCounter
+  let bookObj = library.find(x => x.id === bookID)
+
   let book = document.createElement('div')
   book.classList.add('book-card')
   book.setAttribute('id', 'book' + bookID)
 
   let title = document.createElement('h2')
-  title.innerText = bookTitle.value
+  title.innerText = bookObj.title
   title.classList.add('book-title')
   book.appendChild(title)
 
   let author = document.createElement('p')
-  author.innerText = 'By: ' + bookAuthor.value
+  author.innerText = 'By: ' + bookObj.author
   author.classList.add('book-author')
   book.appendChild(author)
 
   let pages = document.createElement('p')
-  pages.innerText = 'Pages: ' + bookPages.value
+  pages.innerText = 'Pages: ' + bookObj.pages
   pages.classList.add('book-pages')
   book.appendChild(pages)
 
   let read = document.createElement('button')
   read.classList.add('read-button')
-  if (bookRead.checked == true) {
+  if (bookObj.read == true) {
     read.innerText = 'Finished'
     read.classList.add('read-true')
   } else {
@@ -76,7 +82,7 @@ function display() {
     read.classList.add('read-false')
   }
   read.setAttribute('id', 'read' + bookID)
-  read.addEventListener('click', () => changeRead(bookID))
+  read.addEventListener('click', () => updateDisplay(bookID))
   book.appendChild(read)
 
   let remove = document.createElement('button')
@@ -95,19 +101,19 @@ function resetForm() {
   bookRead.checked = false
 }
 
-function changeRead(bookID) {
-  let readInfo = document.getElementById('read' + bookID)
-  let bookObject = library.find(x => x.id === bookID)
-  if (bookObject.read) {
-    bookObject.read = false
-    readInfo.classList.remove('read-true')
-    readInfo.classList.add('read-false')
-    readInfo.innerText = 'Not Read'
+function updateDisplay(bookID) {
+  let readStatus = document.getElementById('read' + bookID)
+  let bookIndex = library.findIndex(x => x.id === bookID)
+
+  library[bookIndex].toggleRead()
+  if (library[bookIndex].read) {
+    readStatus.classList.remove('read-false')
+    readStatus.classList.add('read-true')
+    readStatus.innerText = 'Finished'
   } else {
-    bookObject.read = true
-    readInfo.classList.remove('read-false')
-    readInfo.classList.add('read-true')
-    readInfo.innerText = 'Finished'
+    readStatus.classList.remove('read-true')
+    readStatus.classList.add('read-false')
+    readStatus.innerText = 'Not Read'
   }
 }
 
