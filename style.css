@@ -31,6 +31,7 @@ h1 {
 #add-button {
   z-index: 1;
   background: #EEE;
+  color: #222;
   font-size: 2rem;
   width: 2rem;
   height: 2rem;
