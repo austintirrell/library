@@ -34,10 +34,6 @@ function Book(idCounter, title, author, pages, read) {
   this.read = read
 }
 
-Book.prototype.toggleRead = function() {
-  this.read = !this.read
-}
-
 function addToLibrary() {
   if (bookTitle.value == '' || bookAuthor.value == '' || bookPages.value == '') {
     alert("You're missing a value!")
@@ -94,7 +90,7 @@ function display() {
       read.classList.add('read-false')
     }
     read.setAttribute('id', 'read' + bookObj.id)
-    read.addEventListener('click', () => updateDisplay(bookObj.id))
+    read.addEventListener('click', () => toggleRead(bookObj.id))
     book.appendChild(read)
 
     let remove = document.createElement('button')
@@ -151,19 +147,20 @@ function resetForm() {
   bookRead.checked = false
 }
 
-function updateDisplay(bookID) {
+function toggleRead(bookID) {
   let readStatus = document.getElementById('read' + bookID)
   let bookIndex = library.findIndex(x => x.id === bookID)
 
-  library[bookIndex].toggleRead()
   if (library[bookIndex].read) {
+    library[bookIndex].read = false
+    readStatus.classList.add('read-false')
+    readStatus.classList.remove('read-true')
+    readStatus.innerText = 'Not Read'
+  } else {
+    library[bookIndex].read = true
     readStatus.classList.remove('read-false')
     readStatus.classList.add('read-true')
     readStatus.innerText = 'Finished'
-  } else {
-    readStatus.classList.remove('read-true')
-    readStatus.classList.add('read-false')
-    readStatus.innerText = 'Not Read'
   }
   saveLocal()
 }
