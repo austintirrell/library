@@ -36,44 +36,23 @@ h1 {
   font-size: 1.25rem;
   margin: .5rem
 }
-#sort-by {
+
+#sort-by,
+#sort-by option {
   color: #222;
 }
 
 #add-button {
-  z-index: 1;
-  background: #EEE;
-  color: #222;
-  font-size: 2rem;
-  width: 2rem;
-  height: 2rem;
+  font-size: 1.5rem;
   margin: .5rem;
-  border-radius: 50px;
-  transition: .5s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bar1,
-.bar2 {
-  position: absolute;
   background: #222;
-  width: 1.25rem;
-  height: .25rem;
+  padding: .5rem;
+  border-radius: 15px;
+  transition: .2s;
 }
-
-.bar2 {
-  transform: rotate(90deg);
-}
-
 
 #add-button:hover {
-  background: #BBB;
-}
-
-#add-button.active {
-  transform: rotate(45deg);
+  background: #333
 }
 
 #book-add-form {
@@ -91,6 +70,18 @@ h1 {
 
 #book-add-form.active {
   display: flex;
+}
+
+#close {
+  position: absolute;
+  top:0;
+  right:0;
+  width: 2rem;
+  height: 2rem;
+  margin: 1rem;
+  border-radius: 15px;
+  color: #222;
+  font-size: 1.5rem;
 }
 
 .read-container {
@@ -127,8 +118,6 @@ input {
 #book-container {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  justify-items: center;
-  align-items: center;
 }
 
 .book-card {
@@ -137,7 +126,7 @@ input {
   background: #444;
   width: 15rem;
   padding: 1rem;
-  margin-top: 2rem;
+  margin: 1rem;
   border-radius: 15px;
 }
 

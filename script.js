@@ -7,18 +7,20 @@ const addBookBtn = document.getElementById('add-book')
 const bookRead = document.getElementById('book-read')
 const bookContainer = document.getElementById('book-container')
 const sortBy = document.getElementById('sort-by')
+const closeBtn = document.getElementById('close')
 
 let library
-let idCounter = 0
+let idCounter
 
 addBtn.addEventListener('click', () => {
   bookAddForm.classList.toggle('active')
-  addBtn.classList.toggle('active')
 })
 addBookBtn.addEventListener('click', () => {
   addToLibrary()
   bookAddForm.classList.toggle('active')
-  addBtn.classList.toggle('active')
+})
+closeBtn.addEventListener('click', () => {
+  bookAddForm.classList.toggle('active')
 })
 sortBy.addEventListener('change', () => {
   display()
@@ -168,20 +170,27 @@ function updateDisplay(bookID) {
 
 function removeBook(bookID) {
   let bookObject = library.findIndex(x => x.id === bookID)
-  library.splice(bookObject)
+  library.splice(bookObject, 1)
   display()
 }
 
 function saveLocal() {
   localStorage.setItem('books', JSON.stringify(library))
+  localStorage.setItem('id', JSON.stringify(idCounter))
 }
 
 function restoreLocal() {
-  if (localStorage.getItem('books')) {
+  if (localStorage.getItem('books') != null) {
     library = JSON.parse(localStorage.getItem('books'))
+    if (localStorage.getItem('id') != null) {
+      idCounter = JSON.parse(localStorage.getItem('id'))
+    } else {
+      idCounter = 0
+    }
     display()
   } else {
     library = []
+    idCounter = 0
   }
 }
 
